@@ -1,0 +1,4 @@
+classes=2
+train=data/realDivot/train.txt
+valid=data/realDivot/valid.txt
+names=data/realDivot/classes.names

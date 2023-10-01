@@ -1,0 +1,4 @@
+classes=2
+train=data/synthDivot_608/train.txt
+valid=data/synthDivot_608/valid.txt
+names=data/synthDivot_608/classes.names
