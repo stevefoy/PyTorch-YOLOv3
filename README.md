@@ -44,7 +44,7 @@ python test.py --weights weights/yolov3.weights --model config/yolov3.cfg
 python detect.py --images data/samples/
 ```
 
-<p align="center"><img src="https://github.com/eriklindernoren/PyTorch-YOLOv3/raw/master/assets/divot.png" width="360"\></p>
+<p align="center"><img src="https://github.com/stevefoy/PyTorch-YOLOv3/raw/master/assets/divot.png" width="360"\></p>
 
 
 #### Example (COCO)
