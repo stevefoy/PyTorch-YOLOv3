@@ -70,8 +70,15 @@ AUGMENTATION_TRANSFORMS_Version1 = transforms.Compose([
     ToTensor(),
 ])
 
-
 AUGMENTATION_TRANSFORMS = transforms.Compose([
+    AbsoluteLabels(),
+    StrongAug(),
+    PadSquare(),
+    RelativeLabels(),
+    ToTensor(),
+])
+
+AUGMENTATION_TRANSFORMS_VersionHSV_PAPER = transforms.Compose([
     AbsoluteLabels(),
     GrassAug(),
     PadSquare(),

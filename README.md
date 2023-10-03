@@ -1,7 +1,7 @@
 # PyTorch YOLO
-A minimal PyTorch implementation of YOLOv3, with support for training, inference and evaluation.
+This project is based on PyTorch-YOLOv3
+and has been adapted for the training of testing of a divot dataset.
 
-YOLOv4 and YOLOv7 weights are also compatible with this implementation.
 
 [![CI](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml/badge.svg)](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pytorchyolo.svg)](https://pypi.python.org/pypi/pytorchyolo/) [![PyPI license](https://img.shields.io/pypi/l/pytorchyolo.svg)](LICENSE)
 
@@ -11,14 +11,13 @@ YOLOv4 and YOLOv7 weights are also compatible with this implementation.
 For normal training and evaluation we recommend installing the package from source using a poetry virtual environment.
 
 ```bash
-git clone https://github.com/eriklindernoren/PyTorch-YOLOv3
+git clone repo
 cd PyTorch-YOLOv3/
-pip3 install poetry --user
-poetry install
+
+
 ```
 
-You need to join the virtual environment by running `poetry shell` in this directory before running any of the following commands without the `poetry run` prefix.
-Also have a look at the other installing method, if you want to use the commands everywhere without opening a poetry-shell.
+You need to join the virtual environment by running conda in this versoin 
 
 #### Download pretrained weights
 
@@ -32,54 +31,21 @@ Also have a look at the other installing method, if you want to use the commands
 ./data/get_coco_dataset.sh
 ```
 
-### Install via pip
-
-This installation method is recommended, if you want to use this package as a dependency in another python project.
-This method only includes the code, is less isolated and may conflict with other packages.
-Weights and the COCO dataset need to be downloaded as stated above.
-See __API__ for further information regarding the packages API.
-It also enables the CLI tools `yolo-detect`, `yolo-train`, and `yolo-test` everywhere without any additional commands.
-
-```bash
-pip3 install pytorchyolo --user
-```
-
 ## Test
 Evaluates the model on COCO test dataset.
 To download this dataset as well as weights, see above.
 
 ```bash
-poetry run yolo-test --weights weights/yolov3.weights
+python test.py --weights weights/yolov3.weights --model config/yolov3.cfg 
 ```
 
-| Model                   | mAP (min. 50 IoU) |
-| ----------------------- |:-----------------:|
-| YOLOv3 608 (paper)      | 57.9              |
-| YOLOv3 608 (this impl.) | 57.3              |
-| YOLOv3 416 (paper)      | 55.3              |
-| YOLOv3 416 (this impl.) | 55.5              |
-
-## Inference
-Uses pretrained weights to make predictions on images. Below table displays the inference times when using as inputs images scaled to 256x256. The ResNet backbone measurements are taken from the YOLOv3 paper. The Darknet-53 measurement marked shows the inference time of this implementation on my 1080ti card.
-
-| Backbone                | GPU      | FPS      |
-| ----------------------- |:--------:|:--------:|
-| ResNet-101              | Titan X  | 53       |
-| ResNet-152              | Titan X  | 37       |
-| Darknet-53 (paper)      | Titan X  | 76       |
-| Darknet-53 (this impl.) | 1080ti   | 74       |
 
 ```bash
-poetry run yolo-detect --images data/samples/
+python detect.py --images data/samples/
 ```
 
-<p align="center"><img src="https://github.com/eriklindernoren/PyTorch-YOLOv3/raw/master/assets/giraffe.png" width="480"\></p>
-<p align="center"><img src="https://github.com/eriklindernoren/PyTorch-YOLOv3/raw/master/assets/dog.png" width="480"\></p>
-<p align="center"><img src="https://github.com/eriklindernoren/PyTorch-YOLOv3/raw/master/assets/traffic.png" width="480"\></p>
-<p align="center"><img src="https://github.com/eriklindernoren/PyTorch-YOLOv3/raw/master/assets/messi.png" width="480"\></p>
+<p align="center"><img src="https://github.com/eriklindernoren/PyTorch-YOLOv3/raw/master/assets/divot.png" width="360"\></p>
 
-## Train
-For argument descriptions have a look at `poetry run yolo-train --help`
 
 #### Example (COCO)
 To train on COCO using a Darknet-53 backend pretrained on ImageNet run:
