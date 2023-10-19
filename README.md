@@ -72,7 +72,7 @@ python detect.py --images data/samples/
 To train on COCO using a Darknet-53 backend pretrained on ImageNet run:
 
 ```bash
-poetry run yolo-train --data config/coco.data  --pretrained_weights weights/darknet53.conv.74
+python train --data config/coco.data  --pretrained_weights weights/darknet53.conv.74
 ```
 
 #### Tensorboard
@@ -82,7 +82,7 @@ Track training progress in Tensorboard:
 * Go to http://localhost:6006/
 
 ```bash
-poetry run tensorboard --logdir='logs' --port=6006
+python tensorboard --logdir='logs' --port=6006
 ```
 
 Storing the logs on a slow drive possibly leads to a significant training speed decrease.
@@ -114,42 +114,12 @@ In `data/custom/train.txt` and `data/custom/valid.txt`, add paths to images that
 To train on the custom dataset run:
 
 ```bash
-poetry run yolo-train --model config/yolov3-custom.cfg --data config/custom.data
+python train --model config/yolov3_divots_416.cfg --data config/custom.data
 ```
 
 Add `--pretrained_weights weights/darknet53.conv.74` to train using a backend pretrained on ImageNet.
 
 
-## API
-
-You are able to import the modules of this repo in your own project if you install the pip package `pytorchyolo`.
-
-An example prediction call from a simple OpenCV python script would look like this:
-
-```python
-import cv2
-from pytorchyolo import detect, models
-
-# Load the YOLO model
-model = models.load_model(
-  "<PATH_TO_YOUR_CONFIG_FOLDER>/yolov3.cfg",
-  "<PATH_TO_YOUR_WEIGHTS_FOLDER>/yolov3.weights")
-
-# Load the image as a numpy array
-img = cv2.imread("<PATH_TO_YOUR_IMAGE>")
-
-# Convert OpenCV bgr to rgb
-img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-# Runs the YOLO model on the image
-boxes = detect.detect_image(model, img)
-
-print(boxes)
-# Output will be a numpy array in the following format:
-# [[x1, y1, x2, y2, confidence, class]]
-```
-
-For more advanced usage look at the method's doc strings.
 
 ## Credit
 
