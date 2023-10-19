@@ -22,6 +22,7 @@ from pytorchyolo.test import _evaluate, _create_validation_data_loader
 import seaborn as sns; sns.set()  # for plot styling
 import numpy as np
 import matplotlib.pyplot as plt
+    from sklearn.cluster import KMeans
 
 from terminaltables import AsciiTable
 
@@ -192,10 +193,11 @@ def run():
     x=np.asarray(x)
     x=x.transpose()
 
-    ##########################################   K- Means
+    ##########################################   
+    #         K- Means
     ##########################################
 
-    from sklearn.cluster import KMeans
+
     kmeans3 = KMeans(n_clusters=9)
     kmeans3.fit(x)
     y_kmeans3 = kmeans3.predict(x)
@@ -209,18 +211,19 @@ def run():
 
     yolo_anchor_average=np.array(yolo_anchor_average)
 
+    YoloScale = 416
     plt.scatter(x[:, 0], x[:, 1], c=y_kmeans3, s=2, cmap='viridis')
     plt.scatter(yolo_anchor_average[:, 0], yolo_anchor_average[:, 1], c='red', s=50);
     yoloV3anchors = yolo_anchor_average
-    yoloV3anchors[:, 0] =yolo_anchor_average[:, 0]  *416
-    yoloV3anchors[:, 1] =yolo_anchor_average[:, 1]  *416
+    yoloV3anchors[:, 0] =yolo_anchor_average[:, 0]  *YoloScale
+    yoloV3anchors[:, 1] =yolo_anchor_average[:, 1]  *YoloScale
     yoloV3anchors = np.rint(yoloV3anchors)
     fig, ax = plt.subplots()
     for ind in range(9):
         rectangle= plt.Rectangle((208-yoloV3anchors[ind,0]/2,208-yoloV3anchors[ind,1]/2), yoloV3anchors[ind,0],yoloV3anchors[ind,1] , fc='b',edgecolor='b',fill = None)
         ax.add_patch(rectangle)
     ax.set_aspect(1.0)
-    plt.axis([0,416,0,416])
+    plt.axis([0,YoloScale,0,YoloScale])
     plt.show()
     yoloV3anchors.sort(axis=0)
     print("Your custom anchor boxes are {}".format(yoloV3anchors))

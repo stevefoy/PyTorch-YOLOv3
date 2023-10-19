@@ -1,0 +1,4 @@
+classes=3
+train=data/realDivot_synth/train.txt
+valid=data/realDivot_synth/valid.txt
+names=data/realDivot_synth/classes.names

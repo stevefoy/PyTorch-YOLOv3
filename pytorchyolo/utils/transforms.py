@@ -308,11 +308,22 @@ class correctImageAspectRatio(ImgAug):
             ],
         )
 
+class crop(ImgAug):
+    def __init__(self, ):
+        height, width = 416, 555
+        target_width = 416
 
+        crop_left_right = max(0, (width - target_width) // 2)
+        crop_top_bottom = max(0, (height - target_width) // 2)  # Assuming you also want height to be 416
+
+        self.augmentations = iaa.Sequential([
+            iaa.Crop(px=(crop_top_bottom, crop_left_right, crop_top_bottom, crop_left_right))
+        ])
 
 
 DEFAULT_TRANSFORMS = transforms.Compose([
     AbsoluteLabels(),
+    crop(),
     PadSquare(),
     RelativeLabels(),
     ToTensor(),

@@ -1,23 +1,43 @@
-# PyTorch YOLO
-This project is based on PyTorch-YOLOv3
-and has been adapted for the training of testing of a divot dataset.
+# PyTorch YOLO on Turfgrass Divots
+This project is based on PyTorch-YOLOv3 and branched from master code eriklindernoren.
+
+The code has been adapted and modified for the training and testing of a divot dataset. 
+
+[Link to Zenodo Record](https://www.zenodo.org/record/8375419)
 
 
 [![CI](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml/badge.svg)](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pytorchyolo.svg)](https://pypi.python.org/pypi/pytorchyolo/) [![PyPI license](https://img.shields.io/pypi/l/pytorchyolo.svg)](LICENSE)
 
 ## Installation
-### Installing from source
 
-For normal training and evaluation we recommend installing the package from source using a poetry virtual environment.
+### environment for Divot code installing from source
+
+The project was changed to use conda environment, shared in the conda_setup.yml
+
+Follow these steps to set up a conda environment using the provided `conda_setup.yml` file:
+
+1. **Install Conda**: If you haven't installed conda yet, download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/products/distribution).
+
+2. **Navigate to the Project Directory**: Use the terminal or command prompt to navigate to the directory containing the `conda_setup.yml` file.
 
 ```bash
+conda env create -f conda_setup.yml
+conda activate environment_name
+
+
+```
+
+
+### Divot code installing from source
+
+
 git clone repo
 cd PyTorch-YOLOv3/
 
 
 ```
 
-You need to join the virtual environment by running conda in this versoin 
+
 
 #### Download pretrained weights
 
@@ -68,7 +88,7 @@ Storing the logs on a slow drive possibly leads to a significant training speed 
 
 You can adjust the log directory using `--logdir <path>` when running `tensorboard` and `yolo-train`.
 
-## Train on Custom Dataset
+## Train on Divot Dataset
 
 #### Custom model
 Run the commands below to create a custom model definition, replacing `<num-classes>` with the number of classes in your dataset.
@@ -164,3 +184,14 @@ https://pjreddie.com/yolo/.
 ### YOEO — You Only Encode Once
 
 [YOEO](https://github.com/bit-bots/YOEO) extends this repo with the ability to train an additional semantic segmentation decoder. The lightweight example model is mainly targeted towards embedded real-time applications.
+
+
+### Turfgrass Divot Detection
+## Cite
+```
+ @inproceedings{TBC_2023,
+   author = {Stephen Foy and Simon Mc Loughlin},
+   title = {Deep Learning for Turfgrass Divot Detection},
+   booktitle = { TBC},
+   year = {2023}
+  }
