@@ -8,9 +8,9 @@ The code has been adapted and modified for the training and testing of a divot d
 
 [![CI](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml/badge.svg)](https://github.com/eriklindernoren/PyTorch-YOLOv3/actions/workflows/main.yml) [![PyPI pyversions](https://img.shields.io/pypi/pyversions/pytorchyolo.svg)](https://pypi.python.org/pypi/pytorchyolo/) [![PyPI license](https://img.shields.io/pypi/l/pytorchyolo.svg)](LICENSE)
 
-## Installation
+## Setup
 
-### environment for Divot code installing from source
+### Environment for Divot code installing from source
 
 The project was changed to use conda environment, shared in the conda_setup.yml
 
@@ -45,7 +45,8 @@ cd PyTorch-YOLOv3/
 ./weights/download_weights.sh
 ```
 
-#### Download COCO
+#### Download COCO Dataset & Divots Data
+[Link to Zenodo Record](https://www.zenodo.org/record/8375419)
 
 ```bash
 ./data/get_coco_dataset.sh
