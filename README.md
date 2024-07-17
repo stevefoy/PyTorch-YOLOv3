@@ -122,7 +122,7 @@ Add `--pretrained_weights weights/darknet53.conv.74` to train using a backend pr
 ```bibtex
 @inproceedings{IMVIP2024,
     author = {Stephen Foy and Simon McLoughlin},
-    title = {Assessment of Synthetic Turfgrass Dataset Generation for Divot Detection},
+    title = {Advancing Turfgrass Maintenance with Synthetic Data for Divot Detection},
     booktitle = {Irish Machine Vision and Image Processing Conference Proceedings 2024},
     editor = {TBC},
     year = {2024},
